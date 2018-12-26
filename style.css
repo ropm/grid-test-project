@@ -1,0 +1,312 @@
+
+/*--------------------------------------------------------------
+basic css, body and img
+--------------------------------------------------------------*/
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
+
+body {
+	margin: 0;
+  background-color: #F7F9FB;
+}
+
+img {
+	display: block;
+	border: 0;
+	width: 100%;
+  height: auto;
+
+}
+
+.imgs {
+  margin: auto;
+  width: 100%;
+  padding: 0;
+}
+.imgs img {
+
+}
+
+
+/*--------------------------------------------------------------
+texts, buttons
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+	color: #404040;
+	font-family: 'Helvetica', Arial, sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+	text-align: center;
+	margin: 0;
+	padding: 1em 0;
+}
+
+p {
+	margin: 0;
+	padding: 1em 0;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #07889B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button:hover span {
+  padding-right: 25px;
+}
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#twin1 button {
+  background-color: #F7F9FB;
+}
+#twin1 button a{
+  color: #07889B;
+}
+#twin2 button a{
+  color: #F7F9FB;
+}
+
+
+/* title, logo, nav sections*/
+
+.nav {
+  background-color: #5085A5;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  margin-top: 0;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+}
+
+.nav a {
+  color: #F7F9FB;
+  text-decoration: none;
+  text-transform: uppercase;
+  position
+}
+
+.nav a:hover {
+  color: black;
+}
+
+.help {
+  display: block;
+  padding-top: 120px;
+}
+
+.logo,
+.site-title {
+  color: #404040;
+	text-align: center;
+}
+
+.logo {
+	font-size: 5em;
+}
+
+.site-title {
+	margin-top: -2em;
+	margin-bottom: 2em;
+  font-size: 1em;
+}
+
+/* splash section */
+
+.splash {
+	padding-bottom: 2em;
+
+}
+
+.splash-content {
+	padding: 1.5em;
+  text-align: center;
+}
+
+
+
+/* buckets section */
+
+.li-title h2 {
+  color: white;
+}
+
+.li-title {
+  background-color: #8FC1E3;
+}
+
+.buckets {
+	padding: 2em 1em 1em;
+  background-color: #8FC1E3;
+
+}
+.buckets h2 {
+  color: white;
+}
+
+.buckets ul {
+	margin: 0;
+	padding: 0;
+}
+
+
+.buckets li {
+	margin-bottom: 1em;
+	background: #F7F9FB;
+	list-style-type: none;
+  border: 3px solid #404040;
+}
+
+.bucket {
+	padding: 1.5em;
+}
+
+/* more section */
+
+.more {
+	padding: 2em;
+  background-color: #31708E;
+  text-align: center;
+}
+
+/* twins section */
+
+.twin {
+	padding: 2em;
+	background: #07889B;
+	color: white;
+  text-align: center;
+}
+
+.twin:last-of-type {
+  color: #404040;
+	background: #F7F9FB;
+  text-align: center;
+}
+
+/* foot section */
+.foot {
+	padding: 2em;
+	background: hsl(0, 0%, 10%);
+	color: white;
+	text-align: center;
+}
+
+.foot a {
+	color: white;
+}
+
+.foot a:hover,
+.foot a:focus {
+	border-bottom: 1px solid white;
+}
+
+/*--------------------------------------------------------------
+if no grid support limit width to 50em and align center
+--------------------------------------------------------------*/
+@supports not (display: grid) {
+	.grid {
+		max-width: 50em;
+		margin: 0 auto;
+	}
+}
+
+/*--------------------------------------------------------------
+using flex to create three bucket layout
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 700px) {
+	@supports (display: flex) {
+
+		.buckets ul {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.buckets li {
+			width: 31%;
+		}
+    .more ul {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.more li {
+			width: 31%;
+		}
+
+	}
+}
+
+@media screen and (min-width: 600px) {
+	@supports (display: grid) {
+
+		/* Four-column layout. Two center columns have a total max width of 50em: */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+		}
+
+		/* Center items by placing them in the two center columns: */
+		.splash-content,
+		.more-content,
+		.buckets ul {
+			grid-column: 2/4;
+		}
+
+		/* Use automatic grid placement + span to let each item span two columns:*/
+		.twin,
+		.foot aside {
+			grid-column: span 2;
+		}
+
+	}
+}
